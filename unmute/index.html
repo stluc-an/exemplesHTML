@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css.css" rel="stylesheet">
+    </head>
+    <body>
+        <audio src="music.mp3" autoplay loop muted></audio>
+        
+        <img src="soundoff.svg" id="volumeButton" data-muted>
+        
+        <footer><p>Musique: <a href="https://archive.org/details/apl011/apl011-01-randomajestiq_-_uhoidokalo.mp3" target=_blank>Randomajestiq - Uhoidokalo</a> (CC BY-ND-NC 1.0) </p><p>Icônes son par <a href="https://thenounproject.com/MrMuma/" target=_blank>Darrin Loeliger /  NounProject.com</a></p></footer>
+    </body>
+    
+    <script>
+        var volbutt = document.querySelector("#volumeButton");
+        
+        // fonction déclenchée quand on clique sur le bouton
+        volbutt.onclick = function(){
+            
+            // on regarde son état (ou celui de son attribut "data-muted")
+            // et on va basculer d'un état à l'autre
+            // 1. le son est coupé ; data-muted est présent ; l'icône montre le son coupé
+            // 2. le son joue ; data-muted est enlevé ; l'icône montre le son qui joue
+            
+            // d'abord on change l'icône et on enlève/ajoute data-muted
+            if(volbutt.dataset.muted == ""){
+                volbutt.src = "soundon.svg";
+                delete volbutt.dataset.muted;   
+            }
+            
+            else{
+                volbutt.src = "soundoff.svg";
+                volbutt.dataset.muted = "";
+            }
+            
+            // ensuite on mute/unmute le son en fonction
+            // pour tous les <audio> et <video> de la page
+            document.querySelectorAll("audio, video").forEach(
+                function(media){
+                    media.muted = 'muted' in volbutt.dataset;
+                }
+            );
+            
+        }   
+    </script>
+</html>

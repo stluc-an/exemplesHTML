@@ -1,0 +1,88 @@
+body{
+    /* sur le body, on doit enlever les marges par défaut */
+    margin:0;
+    padding:0;
+    
+    overflow:hidden;
+        
+    /* pour conserver l'aspect pixelisé de mes images :) */
+    image-rendering: pixelated;
+}
+
+/* le bloc qui va contenir la parallaxe */
+#parallax-container{
+  perspective: 3px;
+  height: 100vh;/* la taille de la fenêtre */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* le, plus grand que parallax-container, qui va permettrede scroller */
+#parallax-scroll{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height:500vh;/* hauteur de 5x la hauteur de la viewport */
+  transform-style: preserve-3d;
+}
+
+/* les différents éléments placés dans l'espace 3D 
+- toujours positionnés en absolu
+- translate 3D permet de les situer dans l'espace x,y,z
+- c'est la position z qui "fait" la parallaxe
+- pour que ça soit cohérent, les éléments éloignés doivent aussi être derrière les éléments proches. Le plus simple est de mettre la même valeur pour la distance en Z en pixel, et pour le Z-INDEX
+- scale() permet de changer la taille d'un élément
+*/
+
+#fond{    
+    position: absolute;
+    transform: translate3D(0vh,0vw,-20px) scale(40);
+    z-index:-20;
+}
+
+#cat1{
+    position: absolute;
+    transform: translate3D(40vw,0vh,-2px);
+    z-index:-2;
+}
+
+#cat2{
+    position: absolute;
+    transform: translate3D(5vw,10vh,-1px);
+    z-index:-1;
+}
+
+#cat3{
+    position: absolute;
+    transform: translate3D(12vw,15vh,0px);
+}
+
+#owl1{
+    position: absolute;
+    transform: translate3D(72vw,65vh,-3px);
+    z-index:-3;
+}
+
+#cat4{
+    position: absolute;
+    transform: translate3D(20vw,130vh,-1px);
+    z-index:-1;
+}
+
+#cat5{
+    position: absolute;
+    transform: translate3D(-45vw,175vh,-3px);
+    z-index:-3;
+}
+
+#cat6{
+    position: absolute;
+    transform: translate3D(42vw,75vh,0px);
+    z-index:0;
+}
+
+#owl2{
+    position: absolute;
+    transform: translate3D(-8vw,110vh,-2px);
+    z-index:-1;
+}

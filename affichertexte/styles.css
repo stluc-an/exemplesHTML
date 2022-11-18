@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+
+.boite{
+    width:40vw;
+    padding:1em;
+    background-color:#85fdeb;
+}
+
+.texte{
+    font-size: 2em;
+    transition: opacity 1500ms;
+}
+
+#texte1{
+    opacity: 0;
+}
+

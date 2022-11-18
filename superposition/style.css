@@ -1,0 +1,35 @@
+#parent{
+    position:relative;
+}
+
+#element1{
+    position:absolute;
+    
+    width:500px;
+    height:400px;
+    
+    /* La suite c'est juste pour qu'on visualise la superposition ;) */
+    border:5px solid #00FF00;
+    background-image:url(cat2.png);
+}
+
+#element2{
+    position:absolute;
+    
+    width:500px;
+    height:400px;
+    
+    /* La suite c'est juste pour qu'on visualise la superposition ;) */
+    border:15px dotted #ff8900;
+    background-color:rgba(255, 147, 0, 0.39);
+    
+    /* ça, ça décale le div */
+    left:15px;
+    top:25px;
+    
+    /* pour le texte */
+    text-align: center;
+    font-size: 8em;
+    color:#ff8900;
+    
+}
