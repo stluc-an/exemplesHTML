@@ -1,0 +1,62 @@
+/* les margins et paddings sont pas forcément les mêmes d'un navigateur à l'autre, donc on remet tout à zéro */
+body{
+    margin:0;
+    padding:0;
+}
+
+/* l'élément "parent" qui va contenir les éléments à placer */
+#monalisa{
+    /* les éléments enfants en "position:absolute" vont se placer rapport au premier parent dit "positionné". Si on ne spécifie pas un positionnement à #monalisa, les éléments enfants vont chercher un autre élément ancêtre par rapport auquel se positionner, ce qui sera au pire le body. On utilise la plupart du temps un "position:relative" sur l'élément par rapport auquel on veut se positionner (ici Mona Lisa), parce que "relative" sans spécifier de top/bottom/left/right ne bouge pas l'élément sur lequel on l'indique. */
+    position:relative;
+    
+    /* les margin auto pour la gauche et la droite permettent de centrer l'élément */
+    margin:5vh auto 5vh auto;
+    
+    /* On doit positionner #moustache et #yeux précisément par rapport à l'image de fond de #monalisa, en utilisant des %. Ça vaut pour la largeur mais aussi la hauteur (puisqu'utiliser les % pour la position verticale d'un élement utilise la hauteur du parent. Si je me positionne à 20% par rapport au haut d'un élément qui fait 100px de haut, alors je serai positionné à 20px).
+    
+    DONC notre div #monalisa doit avoir les mêmes proportions que l'image utilisée comme fond, pour que la taille du div corresponde toujours à la taille de la Mona Lisa affichée à l'écran. Il y a un petit calcul à faire:
+    
+    Taile de liliweb.jpg = 725px * 1080px.
+    Rapport = 1080/725 = 1,48965517241379
+    
+    Si je veux une largeur de 30vw (soit 30 pourcents de la largeur de la fenêtre du navigateur)
+    
+    Alors la hauteur de l'image devra être de 
+    30 * 1,48965517241379 = 44,6896551724138 (qu'on va arrondir à une seule décimale, soit 44.7)
+    */
+    
+    width:30vw;
+    height:44.7vw;
+    
+    background-image:url(liliweb.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#monalisa #moustache{
+    /* la moustache se positionnera par rapport aux bords du div #monalisa 
+    (à ne pas confondre avec position:fixed qui se positionne TOUJOURS par rapport aux bords de la fenêtre) */
+    position:absolute;
+    
+    /* tailles et position toujours en %, pour s'adapter à la taille du div #monalisa */
+    width:24%;
+    height:20%;
+    top:28%;
+    left:33%;
+    
+    background-image: url(mous.png);
+    background-size: contain;
+    background-repeat:no-repeat;
+    
+}
+
+#monalisa #yeux{
+    position:absolute;
+    width:20%;
+    height:20%;
+    top:16%;
+    left:33%;
+    
+    font-weight: bold;
+    font-size:4vw;
+}
